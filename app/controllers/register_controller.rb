@@ -14,7 +14,7 @@ class RegisterController < ApplicationController
       @user.nickname = params[:nickname]
     # 이메일 없음 = kakao
     else
-      @user.email = params[:email]
+      @user.email = params[:kaccount_email]
       @user.nickname = params[:nickname]
     end
     @user.save

@@ -1,8 +1,15 @@
 # app/models/user.rb
 
 class User < ApplicationRecord
+  rolify
+   include Authority::UserAbilities
+  
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
+         :omniauth_providers => [:facebook, :kakao, :naver, :google_oauth2]
+
+         
+  has_many :posts, dependent: :destroy
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
@@ -26,15 +33,17 @@ class User < ApplicationRecord
         if user.nil?
           # 카카오는 email을 제공하지 않음
 
-          if auth.provider == "kakao" || "naver"
+          if auth.provider == "kakao"
             # provider(회사)별로 데이터를 제공해주는 hash의 이름이 다릅니다.
 
             # 각각의 omnaiuth별로 auth hash가 어떤 경로로, 어떤 이름으로 제공되는지 확인하고 설정해주세요.
 
             user = User.new(
-              profile_img: auth.info.image,
+              #email: auth.info.kaccount_email,
+              email: auth.info.kaccount_email,
+              profile_img: auth.info.profile_image,
               # 이 부분은 AWS S3와 연동할 때 프로필 이미지를 저장하기 위해 필요한 부분입니다.
-
+            
               # remote_profile_img_url: auth.info.image.gsub('http://','https://'),
 
               password: Devise.friendly_token[0,20]
@@ -67,4 +76,13 @@ class User < ApplicationRecord
   def email_required?
     false
   end
+  
+    after_create :set_default_role, if: Proc.new { User.count > 1 }
+
+  private
+
+  def set_default_role
+    add_role :user
+  end
+  
 end

@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  resources :posts
+  root 'welcome#index'
+
   get 'register/info1'
   get 'register/info2'
   post 'register/infoget'
-  root 'visitor#main'
+  #root 'visitor#main'
   get 'visitor/main'
 
   devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks', registrations: "user/registrations", sessions: 'user/sessions' }

@@ -24,6 +24,20 @@ gem 'omniauth-facebook'
 gem 'omniauth-naver'
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 
+#키 보안
+gem 'figaro'
+
+#db를 한눈에 볼수 있는 젬
+gem 'rails_db'
+# 회원인증 및 권한설정을 위한 젬
+gem 'devise'     # 회원가입 및 인증
+gem 'rolify'     # role 관리
+gem 'authority'  # 권한설정
+
+# 페이지 뷰를 깔끔하게 보이도록 하기 위해서 아래의 두 젬을 추가로 설치한다.
+gem 'bootstrap-sass'
+gem 'simple_form'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

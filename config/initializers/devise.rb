@@ -7,8 +7,8 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '13fa818ed391e1c74c743ec3dd1b1daafeb0bdc157c64a8de3468262f01f5636f49f183598857d56d8eb06d90d2657335127cdfabbc7ba1b26373c8c5090dd29'
-  
-  config.omniauth :facebook, "1606124486093883", "1a6c3837e6ff7c278e461e6a98c2e374"
+
+  config.omniauth :facebook, "1366636660056640", "2fed8c5f13d3f982523509313bcf23e1"
   config.omniauth :google_oauth2, "626156229001-9euahq8u9d6874f9c2kmo7n159g0a4ui.apps.googleusercontent.com", "2HVxoFb8SbiP5HORcZOMKEJQ"
   config.omniauth :kakao, "5d22190f869a8be19415a6d84e28d716", :redirect_path => "/users/auth/kakao/callback"
   config.omniauth :naver, "eshEy9OT_VeUx9XvFdkt", "nJMKoleT_m"

@@ -24,5 +24,6 @@ i.icon, .fa-plus-circle {
  *= require_tree .
  *= require_self
  */
-
-@import 'register'
+@import "bootstrap";
+@import 'register';
+@import "posts";
