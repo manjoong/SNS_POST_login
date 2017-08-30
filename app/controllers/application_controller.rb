@@ -3,5 +3,5 @@ class ApplicationController < ActionController::Base
   Authority.logger.warn(error.message)
   redirect_to request.referrer.presence || root_path, :alert => 'You are not authorized to complete that action.'
   end
-  protect_from_forgery with: :exception
+  protect_from_forgery #with: :exception
 end
